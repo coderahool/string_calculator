@@ -13,6 +13,6 @@ class Calculator
       raise ArgumentError, "negative numbers not allowed #{negative_numbers.join(', ')}"
     end
     # Split based on delimiters
-    numbers.split(/#{delimiter}|\n/).compact.map(&:to_i).sum
+    numbers.split(/#{delimiter}|\n/).reject { |num| num.to_i > 1000 }.map(&:to_i).sum
   end
 end
