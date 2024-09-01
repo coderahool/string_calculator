@@ -3,8 +3,12 @@ class Calculator
     delimiter = ","
 
     if numbers.start_with?("//")
-      delimiter = numbers.match(/\/\/(.)\n/)&.captures&.first
-      numbers = numbers.gsub(/\/\/(.)\n/, "")
+      if numbers =~ /\/\/\[(.+?)\]\n/
+        delimiter = Regexp.escape($1)
+      else
+        delimiter = Regexp.escape(numbers[2])
+      end
+      numbers = numbers.split("\n", 2).last
     end
 
     negative_numbers = numbers.split(/#{delimiter}|\n/).select { |num| num.to_i < 0 }
