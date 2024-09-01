@@ -1,5 +1,5 @@
 class Calculator
   def add(numbers)
-    0
+    numbers.split(",").map(&:to_i).sum
   end
 end
