@@ -3,8 +3,9 @@ class Calculator
     delimiter = ","
 
     if numbers.start_with?("//")
-      if numbers =~ /\/\/\[(.+?)\]\n/
-        delimiter = Regexp.escape($1)
+      if numbers =~ /\/\/(\[.+?\])+\n/
+        delimiters = numbers.scan(/\[(.+?)\]/).flatten
+        delimiter = delimiters.map { |delim| Regexp.escape(delim) }.join("|")
       else
         delimiter = Regexp.escape(numbers[2])
       end
