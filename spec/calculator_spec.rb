@@ -10,5 +10,10 @@ RSpec.describe  Calculator do
     it "adds a single number" do
       expect(Calculator.new.add("5")).to eq(5)
     end
+
+    it "handles a large number of numbers" do
+      numbers = (1..1000).to_a.join(",")
+      expect(Calculator.new.add(numbers)).to eq(500500)
+    end
   end
 end
