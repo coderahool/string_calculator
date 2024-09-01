@@ -31,5 +31,9 @@ RSpec.describe  Calculator do
     it "handles empty strings with delimiters" do
       expect(Calculator.new.add("//;\n")).to eq(0)
     end
+
+    it "throws an exception for negative numbers" do
+      expect { Calculator.new.add("-1,-4,2") }.to raise_error(ArgumentError, "negative numbers not allowed -1, -4")
+    end
   end
 end
