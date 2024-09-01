@@ -15,5 +15,9 @@ RSpec.describe  Calculator do
       numbers = (1..1000).to_a.join(",")
       expect(Calculator.new.add(numbers)).to eq(500500)
     end
+
+    it "handles newlines between numbers" do
+      expect(Calculator.new.add("1\n2,3")).to eq(6)
+    end
   end
 end
