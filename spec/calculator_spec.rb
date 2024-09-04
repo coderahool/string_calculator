@@ -26,6 +26,11 @@ RSpec.describe Calculator do
       expect(Calculator.new.add("//;\n1;2")).to eq(3)
     end
 
+    # we have to support * in custom delimiters and we need to multiple that
+    it 'handles custom delimiters *' do
+      expect(Calculator.new.add("//*\n1*2")).to eq(2)
+    end
+
     it 'handles empty strings with delimiters' do
       expect(Calculator.new.add("//;\n")).to eq(0)
     end
