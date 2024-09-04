@@ -19,6 +19,8 @@ class Calculator
     numbers.map(&:to_i).reduce(@delimiter == "\\*" ? :* : :+)
   end
 
+  private
+
   def split_numbers(numbers, delimiter)
     numbers.split(/#{delimiter}|\n/).reject { |num| num.to_i > 1000 }
   end
